@@ -5,12 +5,15 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import jakarta.validation.Valid;
 
 @RestController
 public class UserResource {
@@ -49,7 +52,7 @@ public class UserResource {
 	//save/user
    //Using of Response entity to send proper response
 	@PostMapping("/save/user")
-	public ResponseEntity<User> createUser(@RequestBody User user) {
+	public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
 		
 		userDaoService.createUser(user);
 		
@@ -63,7 +66,20 @@ public class UserResource {
 				.toUri();
 				return ResponseEntity.created(location).build();		
 		
-	}	
+	}
+	
+	
+	//delete/user/id
+	
+			@DeleteMapping("/users/{id}")
+			public void deleteUserById(@PathVariable int id){
+				
+				userDaoService.deleteById(id);
+				
+					
+				
+			}
+			
 	
 
 }

@@ -31,5 +31,7 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 		return new ResponseEntity<ErrorDeatils>(errorDetails, HttpStatus.NOT_FOUND);
 		
 	}
+	
+	
 
 }
