@@ -2,8 +2,11 @@ package com.pinaki.springboot.restfulwebservices.User;
 
 import java.net.URI;
 import java.util.List;
-
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -79,6 +82,30 @@ public class UserResource {
 					
 				
 			}
+			
+			//Get/user/id
+			
+//			@GetMapping("/users/{id}")
+//			public EntityModel<User> retriveUserHeteros(@PathVariable int id){
+//				
+//				User user = userDaoService.findoneById(id);
+//				
+//				
+//				//1st we have user class to EntityModel
+//				
+//				EntityModel<User> entityModel = EntityModel.of(user);
+//				
+//				//Then By webMVCLinkBuilder we have added particular method link
+//				WebMvcLinkBuilder link = linkTo(methodOn(this.getClass()).getAllUsers());
+//				
+//				//Then we added link to key value in json named as all-users
+//				
+//				entityModel.add(link.withRel("all-users"));
+//				
+//				return entityModel;
+//				
+//			}
+			
 			
 	
 
